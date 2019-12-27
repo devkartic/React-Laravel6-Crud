@@ -10,7 +10,7 @@ class Edit extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/categories/edit/'+this.props.match.params.id)
+        axios.get('http://localhost:8000/api/categories/edit/'+this.props.match.params.id)
             .then(response=>{
                 this.setState({
                     name : response.data.name
@@ -28,7 +28,7 @@ class Edit extends Component{
         event.preventDefault();
         // console.log(this.state.name);
 
-        axios.put('http://localhost:8000/categories/'+this.props.match.params.id, {
+        axios.put('http://localhost:8000/api/categories/'+this.props.match.params.id, {
           name : this.state.name,
           headers: {
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

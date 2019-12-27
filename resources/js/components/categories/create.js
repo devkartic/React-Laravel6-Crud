@@ -19,7 +19,7 @@ class Create extends Component{
         event.preventDefault();
         // console.log(this.state.name);
 
-        axios.post('http://localhost:8000/categories', {
+        axios.post('http://localhost:8000/api/categories', {
           name : this.state.name,
           headers: {
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

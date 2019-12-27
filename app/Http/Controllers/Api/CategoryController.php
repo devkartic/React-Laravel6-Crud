@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -90,3 +91,4 @@ class CategoryController extends Controller
         return response()->json([$delete]);
     }
 }
+

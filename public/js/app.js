@@ -73394,7 +73394,7 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/categories/edit/' + this.props.match.params.id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/categories/edit/' + this.props.match.params.id).then(function (response) {
         _this2.setState({
           name: response.data.name
         });
@@ -73412,7 +73412,7 @@ function (_Component) {
     value: function onsubmitHandler(event) {
       event.preventDefault(); // console.log(this.state.name);
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('http://localhost:8000/categories/' + this.props.match.params.id, {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('http://localhost:8000/api/categories/' + this.props.match.params.id, {
         name: this.state.name,
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -73526,7 +73526,7 @@ function (_Component) {
     value: function onsubmitHandler(event) {
       event.preventDefault(); // console.log(this.state.name);
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/categories', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/categories', {
         name: this.state.name,
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -73727,7 +73727,7 @@ function (_Component) {
 
       // console.log(`active page is ${pageNumber}`);
       // this.setState({activePage: pageNumber});
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/categories?page=' + pageNumber).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/categories?page=' + pageNumber).then(function (response) {
         _this2.setState({
           categories: response.data.data,
           activePage: response.data.current_page,
@@ -73742,7 +73742,7 @@ function (_Component) {
     value: function componentDidMount() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/categories').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/categories').then(function (response) {
         _this3.setState({
           categories: response.data.data,
           activePage: response.data.current_page,
@@ -73757,7 +73757,7 @@ function (_Component) {
     value: function onDelete(category_id) {
       var _this4 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('http://localhost:8000/categories/' + category_id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]('http://localhost:8000/api/categories/' + category_id).then(function (response) {
         var categories = _this4.state.categories;
 
         for (var i = 0; i < categories.length; i++) {

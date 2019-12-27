@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/* Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
+
+Route::get('categories', 'Api\CategoryController@index');
+Route::post('categories', 'Api\CategoryController@store');
+Route::get('categories/edit/{category}', 'Api\CategoryController@edit');
+Route::put('categories/{category}', 'Api\CategoryController@update');
+Route::delete('categories/{category}', 'Api\CategoryController@destroy');

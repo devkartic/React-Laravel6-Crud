@@ -19,7 +19,7 @@ class List extends Component{
     handlePageChange(pageNumber) {
         // console.log(`active page is ${pageNumber}`);
         // this.setState({activePage: pageNumber});
-        axios.get('http://localhost:8000/categories?page='+pageNumber)
+        axios.get('http://localhost:8000/api/categories?page='+pageNumber)
             .then(response=>{
                 this.setState({
                     categories: response.data.data,
@@ -32,7 +32,7 @@ class List extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8000/categories')
+        axios.get('http://localhost:8000/api/categories')
             .then(response=>{
                 this.setState({
                     categories: response.data.data,
@@ -45,7 +45,7 @@ class List extends Component{
     }
 
     onDelete(category_id){
-        axios.delete('http://localhost:8000/categories/'+category_id)
+        axios.delete('http://localhost:8000/api/categories/'+category_id)
             .then(response=>{
                let categories = this.state.categories;
                for (let i = 0; i<categories.length; i++){
