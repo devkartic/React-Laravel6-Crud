@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Link, Route} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import Home from './../Home'
 import About from './../About'
-import Categories from './../categories/index'
-
+import Categories from "../categories/Index";
 class Header extends Component{
     render(){
         return(
-            <Router>
+            <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <a className="navbar-brand" href="#">Navbar</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -36,8 +35,8 @@ class Header extends Component{
                 </nav>
                 <Route exact path={'/'} component={Home}/>
                 <Route epath path={'/about'} component={About}/>
-                <Route epath path={'/categories'} component={Categories}/>
-            </Router>
+                <Route epath path={'/categories/'} component={Categories}/>
+            </div>
         );
     }
 }

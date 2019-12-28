@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import axios from 'axios';
 import Pagination from "react-js-pagination";
+
 class List extends Component{
 
     constructor(props){

@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Success from '../Alert/Success'
 class Edit extends Component{
 
     constructor(props) {
         super(props);
-        this.state = { name : '' };
+        this.state = {
+            name : '',
+            alert : ''
+        };
         this.onchangeHandler = this.onchangeHandler.bind(this);
         this.onsubmitHandler = this.onsubmitHandler.bind(this);
     }
@@ -34,13 +38,16 @@ class Edit extends Component{
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
         }).then(response=>{
-                console.log(response);
+                this.setState({
+                    alert : 'success'
+                })
         });
     }
 
     render(){
         return(
             <div className="card mt-1">
+                <Success />
                 <div className="card-header">
                     Category Update
                 </div>
