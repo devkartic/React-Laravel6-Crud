@@ -73256,17 +73256,21 @@ function (_Component) {
   _createClass(Success, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "alert alert-success alert-dismissible fade show",
-        role: "alert"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Success!"), " Request done successfully.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "close",
-        "data-dismiss": "alert",
-        "aria-label": "Close"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "aria-hidden": "true"
-      }, "\xD7")));
+      if (this.props.alert) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "alert alert-success alert-dismissible fade show",
+          role: "alert"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Success!"), " Request done successfully.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "close",
+          "data-dismiss": "alert",
+          "aria-label": "Close"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          "aria-hidden": "true"
+        }, "\xD7")));
+      }
+
+      return null;
     }
   }]);
 
@@ -73413,10 +73417,12 @@ if (document.getElementById('app')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Create; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Alert_Success__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Alert/Success */ "./resources/js/components/Alert/Success.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73438,6 +73444,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Create =
 /*#__PURE__*/
 function (_Component) {
@@ -73450,7 +73457,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Create).call(this, props));
     _this.state = {
-      name: ''
+      name: '',
+      message: null
     };
     _this.onchangeHandler = _this.onchangeHandler.bind(_assertThisInitialized(_this));
     _this.onsubmitHandler = _this.onsubmitHandler.bind(_assertThisInitialized(_this));
@@ -73467,6 +73475,8 @@ function (_Component) {
   }, {
     key: "onsubmitHandler",
     value: function onsubmitHandler(event) {
+      var _this2 = this;
+
       event.preventDefault(); // console.log(this.state.name);
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/categories', {
@@ -73475,7 +73485,9 @@ function (_Component) {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       }).then(function (response) {
-        console.log(response);
+        _this2.setState({
+          message: 'success'
+        });
       });
     }
   }, {
@@ -73483,7 +73495,9 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mt-1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Alert_Success__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        alert: this.state.message
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header"
       }, "Category Create"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
@@ -73514,7 +73528,7 @@ function (_Component) {
   return Create;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Create);
+
 
 /***/ }),
 
@@ -73567,7 +73581,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Edit).call(this, props));
     _this.state = {
       name: '',
-      alert: ''
+      message: null
     };
     _this.onchangeHandler = _this.onchangeHandler.bind(_assertThisInitialized(_this));
     _this.onsubmitHandler = _this.onsubmitHandler.bind(_assertThisInitialized(_this));
@@ -73606,7 +73620,7 @@ function (_Component) {
         }
       }).then(function (response) {
         _this3.setState({
-          alert: 'success'
+          message: 'success'
         });
       });
     }
@@ -73615,7 +73629,9 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mt-1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Alert_Success__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Alert_Success__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        alert: this.state.message
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header"
       }, "Category Update"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
@@ -73659,6 +73675,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -73734,7 +73751,7 @@ function (_Component) {
   return Index;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Index);
+
 
 /***/ }),
 
@@ -73747,6 +73764,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return List; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -73754,6 +73772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
 /* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Alert_Success__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Alert/Success */ "./resources/js/components/Alert/Success.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73777,6 +73796,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var List =
 /*#__PURE__*/
 function (_Component) {
@@ -73789,6 +73809,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(List).call(this, props));
     _this.state = {
+      message: null,
       categories: [],
       activePage: 1,
       itemsCountPerPage: 1,
@@ -73808,6 +73829,7 @@ function (_Component) {
       // this.setState({activePage: pageNumber});
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/categories?page=' + pageNumber).then(function (response) {
         _this2.setState({
+          message: null,
           categories: response.data.data,
           activePage: response.data.current_page,
           itemsCountPerPage: response.data.per_page,
@@ -73823,6 +73845,7 @@ function (_Component) {
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/categories').then(function (response) {
         _this3.setState({
+          message: null,
           categories: response.data.data,
           activePage: response.data.current_page,
           itemsCountPerPage: response.data.per_page,
@@ -73843,7 +73866,8 @@ function (_Component) {
           if (categories[i].id === category_id) categories.splice(i, 1);
 
           _this4.setState({
-            categories: categories
+            categories: categories,
+            message: 'success'
           });
         }
       });
@@ -73856,7 +73880,9 @@ function (_Component) {
       var sl = 0;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card mt-1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Alert_Success__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        alert: this.state.message
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header"
       }, "Categories"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
@@ -73907,7 +73933,7 @@ function (_Component) {
   return List;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (List);
+
 
 /***/ }),
 

@@ -6,14 +6,18 @@ class Success extends Component{
     }
 
     render(){
-        return(
-            <div className="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> Request done successfully.
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        );
+        if(this.props.alert) {
+            return (
+                <div className="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> Request done successfully.
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            );
+        }
+
+        return null;
     }
 }
 

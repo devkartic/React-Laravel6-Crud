@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import {Link, Route} from 'react-router-dom';
 import axios from 'axios';
 import Pagination from "react-js-pagination";
+import Success from "../Alert/Success";
 
-class List extends Component{
+export default class List extends Component{
 
     constructor(props){
         super(props);
         this.state = {
+            message : null,
             categories : [],
             activePage : 1,
             itemsCountPerPage : 1,
@@ -23,6 +25,7 @@ class List extends Component{
         axios.get('http://localhost:8000/api/categories?page='+pageNumber)
             .then(response=>{
                 this.setState({
+                    message : null,
                     categories: response.data.data,
                     activePage : response.data.current_page,
                     itemsCountPerPage : response.data.per_page,
@@ -36,6 +39,7 @@ class List extends Component{
         axios.get('http://localhost:8000/api/categories')
             .then(response=>{
                 this.setState({
+                    message : null,
                     categories: response.data.data,
                     activePage : response.data.current_page,
                     itemsCountPerPage : response.data.per_page,
@@ -52,7 +56,8 @@ class List extends Component{
                for (let i = 0; i<categories.length; i++){
                    if(categories[i].id===category_id) categories.splice(i, 1);
                    this.setState({
-                       categories : categories
+                       categories : categories,
+                       message : 'success'
                    })
                }
             });
@@ -62,6 +67,7 @@ class List extends Component{
         let sl = 0;
         return(
             <div className="card mt-1">
+                <Success alert={this.state.message}/>
                 <div className="card-header">
                     Categories
                 </div>
@@ -116,5 +122,3 @@ class List extends Component{
         );
     }
 }
-
-export default List;

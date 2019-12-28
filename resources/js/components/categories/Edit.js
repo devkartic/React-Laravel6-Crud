@@ -7,7 +7,7 @@ class Edit extends Component{
         super(props);
         this.state = {
             name : '',
-            alert : ''
+            message : null
         };
         this.onchangeHandler = this.onchangeHandler.bind(this);
         this.onsubmitHandler = this.onsubmitHandler.bind(this);
@@ -39,7 +39,7 @@ class Edit extends Component{
           }
         }).then(response=>{
                 this.setState({
-                    alert : 'success'
+                    message : 'success'
                 })
         });
     }
@@ -47,7 +47,7 @@ class Edit extends Component{
     render(){
         return(
             <div className="card mt-1">
-                <Success />
+                <Success alert={this.state.message} />
                 <div className="card-header">
                     Category Update
                 </div>

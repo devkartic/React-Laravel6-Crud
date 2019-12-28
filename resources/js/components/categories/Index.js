@@ -5,7 +5,8 @@ import Pagination from "react-js-pagination";
 import Create from "./Create";
 import Edit from "./Edit";
 import List from "./List";
-class Index extends Component{
+
+export default class Index extends Component{
     render(){
         return(
             <div>
@@ -18,5 +19,3 @@ class Index extends Component{
         );
     }
 }
-
-export default Index;

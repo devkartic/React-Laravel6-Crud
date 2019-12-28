@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-class Create extends Component{
+import axios from 'axios'
+import Success from "../Alert/Success";
+
+export default class Create extends Component{
 
     constructor(props) {
         super(props);
-        this.state = { name : '' };
+        this.state = {
+            name : '',
+            message : null
+        };
         this.onchangeHandler = this.onchangeHandler.bind(this);
         this.onsubmitHandler = this.onsubmitHandler.bind(this);
     }
@@ -25,13 +30,16 @@ class Create extends Component{
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
         }).then(response=>{
-                console.log(response);
+                this.setState({
+                    message: 'success'
+                })
         });
     }
 
     render(){
         return(
             <div className="card mt-1">
+                <Success alert={this.state.message}/>
                 <div className="card-header">
                     Category Create
                 </div>
@@ -49,5 +57,3 @@ class Create extends Component{
         );
     }
 }
-
-export default Create;
